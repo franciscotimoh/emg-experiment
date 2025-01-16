@@ -25,3 +25,6 @@ dependencies:
     - tensorflow-serving-api~=2.14.0
     - tensorflow~=2.14.0
     - transformers~=4.35.0
+    - PyEMD
+    - EMD-signal
+    - pyemd
