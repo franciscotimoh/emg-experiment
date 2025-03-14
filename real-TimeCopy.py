@@ -32,7 +32,7 @@ def extract_sliding_windows(window_size=500, stride=100):
 
 def playVideo(label):
 
-    # if label == 0: 
+    # if label == 0:  
     #     video_path = "rest.MOV"
     # elif label == 1:
     #     video_path = "grasp.MOV"
@@ -55,17 +55,27 @@ def playVideo(label):
     # cap = cv2.VideoCapture(video_path)
     
 
+    # video_paths = {
+    #                 0: "rest.MOV",
+    #                 1: "grasp.MOV",
+    #                 2: "release.MOV",
+    #                 3: "curl.MOV",
+    #                 4: "extend.MOV",
+    #                 5: "pinch.MOV",
+    #                 6: "jaw.MOV",
+    #                 7: "thumb down.MOV",
+    #                 8: "thumb up.MOV"
+    #               }       
     video_paths = {
-                    0: "rest.MOV",
-                    1: "grasp.MOV",
-                    2: "release.MOV",
-                    3: "curl.MOV",
-                    4: "extend.MOV",
-                    5: "pinch.MOV",
-                    6: "jaw.MOV",
-                    7: "thumb down.MOV",
-                    8: "thumb up.MOV"
-                  }       
+                    1: "GRASP_cut.mp4",
+                    2: "RELEASE_cut.mp4",
+                    3: "CURL_cut.mp4",
+                    4: "EXTEND_cut.mp4",
+                    5: "PINCH_cut.mp4",
+                    6: "JAW_cut.mp4",
+                    7: "THUMBDOWN_cut.mp4",
+                    8: "THUMBUP_cut.mp4"
+                  }  
     
     # video_path = video_paths.get(label)
     
@@ -155,7 +165,9 @@ def main():
     
     # Position the Matplotlib window on the left side of the screen
     manager = plt.get_current_fig_manager()
-    manager.window.move(0, 0)
+    # manager.window.move(0, 0)
+    manager.window.geometry("+0+0")
+
 
     # Initialize plot lines and set fixed axis limits
     line0, = axs[0].plot([], [], color="blue")
