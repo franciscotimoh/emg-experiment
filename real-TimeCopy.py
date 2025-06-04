@@ -31,41 +31,8 @@ def extract_sliding_windows(window_size=500, stride=100):
 #SPLIT THE SCREEN TO BE LEFT AND RIGHT
 
 def playVideo(label):
-
-    # if label == 0:  
-    #     video_path = "rest.MOV"
-    # elif label == 1:
-    #     video_path = "grasp.MOV"
-    # elif label == 2:
-    #     video_path = "release.MOV"
-    # elif label == 3:
-    #     video_path = "curl.MOV"
-    # elif label == 4:
-    #     video_path = "extend.MOV"
-    # elif label == 5:
-    #     video_path = "pinch.MOV"
-    # elif label == 6:
-    #     video_path = "jaw.MOV"
-    # elif label == 7:
-    #     video_path = "thumb down.MOV"
-    # elif label == 8:
-    #     video_path = "thumb up.MOV"
-
-    # Create a VideoCapture object
-    # cap = cv2.VideoCapture(video_path)
     
-
-    # video_paths = {
-    #                 0: "rest.MOV",
-    #                 1: "grasp.MOV",
-    #                 2: "release.MOV",
-    #                 3: "curl.MOV",
-    #                 4: "extend.MOV",
-    #                 5: "pinch.MOV",
-    #                 6: "jaw.MOV",
-    #                 7: "thumb down.MOV",
-    #                 8: "thumb up.MOV"
-    #               }       
+     
     video_paths = {
                     1: "GRASP_cut.mp4",
                     2: "RELEASE_cut.mp4",
@@ -76,16 +43,7 @@ def playVideo(label):
                     7: "THUMBDOWN_cut.mp4",
                     8: "THUMBUP_cut.mp4"
                   }  
-    
-    # video_path = video_paths.get(label)
-    
-    # # Create a named window and move it to the right side of the screen.
-    # cv2.namedWindow('Video', cv2.WINDOW_NORMAL)
-    # # Change the (x, y) values below as needed.
-    # cv2.moveWindow('Video', 0, 480)  # x=800 positions it on the right side, y=0 is the top.
-    
-    # cap = cv2.VideoCapture(video_path)
-    
+
 
     video_path = video_paths.get(label)
     
@@ -200,24 +158,7 @@ def main():
         output.append(prediction)        
 
         
-        
-        # if len(output) == STATIC_THRESHHOLD_VALUE:
-        #     label = mode(output)
-        #     output = []
-        #     if label != previous:
-        #         previous = label
-        
-        #         print(f"Window predicted: {label}")
-
-        #         if (label == 0):
-        #             fig.suptitle(f"No FES Delivered For Movement: {movement_encoding[label]}")
-        #         else:
-        #             fig.suptitle(f"FES Delivered For Movement: {movement_encoding[label]}")
-                    
-        #         playVideo(label)
-        
-
-
+    
         # Append new prediction to the sliding window
         if len(output) > STATIC_THRESHHOLD_VALUE:
             
@@ -238,21 +179,6 @@ def main():
                     video_thread = threading.Thread(target=playVideo, args=(label,), daemon=True)
                     video_thread.start()
 
-
-        
-        # Update the plot with new data for both channels
-        # x = np.arange(window.shape[0])
-        # y0 = window["channel_0"].values
-        # y1 = window["channel_1"].values
-        
-        # line0.set_data(x, y0)
-        # line1.set_data(x, y1)
-        
-        # plt.draw()         # Redraw the current figure
-        # plt.pause(0.1)     # Short pause to simulate real-time update
-        
-        # Use the DataFrame's index as the x values
-        
 
         x = window.index  
         y0 = window["channel_0"].values
